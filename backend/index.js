@@ -18,6 +18,9 @@ require('./connectionDB');
 // ROTAS PRODUTOS
 app.post('/novo-produtos', require('./app/produtos/controller').novoProduto);
 app.get('/listar-produtos', require('./app/produtos/controller').listar);
+app.get('/buscar-produto/:id', require('./app/produtos/controller').buscarproduto);
+app.post('/editar-produto', require('./app/produtos/controller').editarProduto);
+
 
 // ROTAS CLIENTES
 app.post('/novo-cliente', require('./app/cliente/controller').novoCliente);
