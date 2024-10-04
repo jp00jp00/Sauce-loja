@@ -10,3 +10,6 @@ Projeto de desenvolvimento de uma loja.
 - MongoDB
 
 # Screenshots
+<p float="left">
+<img src="./docs/loja.png"/>
+</p>
