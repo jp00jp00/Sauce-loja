@@ -29,30 +29,6 @@
                 <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                     <ul
                         class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                        <li>
-                            <a href="novo.html"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                                Novo Produto
-                            </a>
-                        <li>
-                            <a href="#"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                                Tenis
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                                Moletons
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-                                Camisetas
-                            </a>
-                        </li>
-
                     </ul>
                 </div>
             </div>
@@ -68,27 +44,27 @@
                 </div>
                 <div class="mb-5">
                     <label for="text"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descrição</label>
-                    <input type="text" v-model="form.descricao"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                    <input type="text" v-model="form.email"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         required />
                 </div>
                 <div class="mb-5">
-                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Valor</label>
-                    <input type="number" v-model="form.valor"
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telefone</label>
+                    <input type="text" v-model="form.telefone"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         required />
                 </div>
                 <div class="mb-5">
-                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">URL
-                        Imagem</label>
-                    <input type="text" v-model="form.url"
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CPF
+                        </label>
+                    <input type="text" v-model="form.cpf"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         required />
                 </div>
-                <button @click="novoProduto" type="button"
+                <button @click="novoCliente" type="button"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Novo Produto
+                    Novo Cliente
                 </button>
             </form>
         </div>
@@ -100,13 +76,13 @@
             data: {
                 form: {
                     nome: '',
-                    descricao: '',
-                    valor: '',
-                    url: ''
+                    email: '',
+                    telefone: '',
+                    cpf: ''
                 }
             },
             methods: {
-                async novoProduto() {
+                async novoCliente() {
                     const body = JSON.stringify(this.form);
                     const data = {
                         method: 'POST',
@@ -115,9 +91,9 @@
                         },
                         body: body
                     };
-                    const response = await fetch('http://localhost:8560/novo-produtos', data);
+                    const response = await fetch('http://localhost:8560/novo-cliente', data);
                     await response.json();
-                    alert("Produto salvo");
+                    alert("Cliente Cadastrado");
                 }
             },
         });
