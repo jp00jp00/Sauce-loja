@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Sauce</title>
 </head>
 
@@ -65,6 +66,12 @@
         </nav>
 
         <div class="max-w-screen-xl mx-auto py-10 px-4">
+            <div class="grid grid-cols-12 gap-4 mb-4">
+                <div class="col-span-6">
+                    <input v-model="busca" class="buscar" type="text" placeholder=" Descubra seu drip">
+                </div>
+                <button @click="start" class="button">Buscar</button>
+            </div>
             <div class="grid grid-cols-12 gap-4">
                 <div v-for="(item, idx) in list_produtos" :key="idx" class="col-span-4">
                     <div
@@ -105,10 +112,16 @@
             el: '#app',
             data: {
                 list_produtos: [],
+                busca: ""
+            },
+            methods: {
+                async start() {
+                    const response = await fetch(`http://localhost:8560/listar-produtos?busca=${this.busca}`);
+                    this.list_produtos = await response.json();
+                }
             },
             async mounted() {
-                const response = await fetch('http://localhost:8560/listar-produtos');
-                this.list_produtos = await response.json();
+                await this.start();
             }
         });
     </script>

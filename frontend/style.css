@@ -1,0 +1,22 @@
+.buscar {
+    width: 100%;
+    border-radius: 7px;
+    background-color: #C7D2FE;
+    height: 32px;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-style: italic;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.button {
+    border: 7px;
+    color: #111827;
+    background-color: #C7D2FE;
+    border-radius: 7px;
+    font-style: italic;
+    font-size: medium;
+    font-weight: bold;
+}

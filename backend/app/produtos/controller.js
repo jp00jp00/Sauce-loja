@@ -1,3 +1,4 @@
+const { query } = require('express');
 const Model = require('./model');
 
 exports.novoProduto = async (req,res) => {
@@ -14,7 +15,11 @@ exports.novoProduto = async (req,res) => {
 }
 
 exports.listar = async(req, res) => {
-    const produtos = await Model.find();
+    const filtro = {};
+    if (req.query && req.query.busca) {
+        filtro.nome = { $regex: req.query.busca, $options: "mi" }
+    }
+    const produtos = await Model.find(filtro);
     res.json(produtos);
 }
 
