@@ -16,7 +16,7 @@ require('./connectionDB');
 // DELETE - ROTA PARA DELETAR
 
 // ROTAS PRODUTOS
-app.post('/novo-produtos', require('./app/produtos/controller').novoProduto);
+app.post('/novo-produto', require('./app/produtos/controller').novoProduto);
 app.get('/listar-produtos', require('./app/produtos/controller').listar);
 app.get('/buscar-produto/:id', require('./app/produtos/controller').buscarproduto);
 app.post('/editar-produto', require('./app/produtos/controller').editarProduto);
@@ -25,6 +25,9 @@ app.post('/editar-produto', require('./app/produtos/controller').editarProduto);
 // ROTAS CLIENTES
 app.post('/novo-cliente', require('./app/cliente/controller').novoCliente);
 app.get('/listar-cliente', require('./app/cliente/controller').listar);
+app.get('/buscar-cliente/:id', require('./app/cliente/controller').buscarcliente);
+app.post('/editar-cliente', require('./app/cliente/controller').editarCliente);
+app.delete('/remover-cliente/:id', require('./app/cliente/controller').removercliente);
 
 app.listen(8560); // APP DEFINDO SUA PORTA
 console.log("Sistema rodando na porta 8560...");

@@ -1,4 +1,3 @@
-const { query } = require('express');
 const Model = require('./model');
 
 exports.novoProduto = async (req,res) => {
